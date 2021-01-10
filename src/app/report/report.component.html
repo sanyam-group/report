@@ -1,0 +1,125 @@
+<div class="report">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Member Name</mat-label>
+          <input matInput name = 'username' [(ngModel)]="username">
+        </mat-form-field>
+
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Mobile</mat-label>
+            <input type="number" matInput name = 'mobile' [(ngModel)]="mobile" placeholder="555-555-1234">
+          </mat-form-field>
+        </form>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" name = 'startDate' [(ngModel)]="startDate">
+            <input matEndDate placeholder="End date" name = 'endDate' [(ngModel)]="endDate">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Panelty Details</mat-label>
+          <textarea rows="5" matInput name = 'panelty' [(ngModel)]="panelty"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Total Meetings & Functions</mat-label>
+          <textarea rows="5" matInput name = 'meetings' [(ngModel)]="meetings"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Sanchalak Name</mat-label>
+          <input matInput name = 'sanchalak' [(ngModel)]="sanchalak">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Report Maker Name</mat-label>
+          <input matInput name = 'reportMakerName' [(ngModel)]="reportMakerName">
+        </mat-form-field>
+      </div>
+      <div class="col-xs-6 report-output" id="print-section">
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <div class="col-2">
+              <img src="assets/logo.png" height="50" width="50"/>
+            </div>
+            <div class="col-10 mt-3">
+              <p>Progress Report of Sanyam Group</p>
+            </div>
+          </div>
+        </div>
+
+          <div class="row mt-5">
+            <div class="col-4">
+              <p>Name</p>
+            </div>
+            <div class="col-8">
+              <p>{{username}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <p>Mobile</p>
+            </div>
+            <div class="col-8">
+              <p>{{mobile}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <p>Duration of report</p>
+            </div>
+            <div class="col-8">
+              <p>{{startDate | date: 'shortDate'}} to {{endDate | date: 'shortDate'}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <p>Panelty</p>
+            </div>
+            <div class="col-8">
+              <pre>{{panelty}}</pre>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <p>Total Meetings & Functions</p>
+            </div>
+            <div class="col-8">
+              <pre>{{meetings}}</pre>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <p>Sanchalak - {{sanchalak}}</p>
+              <hr>
+            </div>
+            <div class="col-4">
+              <p>Member - {{username}}</p>
+              <hr>
+            </div>
+            <div class="col-4">
+              <p>Report Maker - {{reportMakerName}}</p>
+              <hr>
+            </div>
+          </div>       
+      </div>
+
+      <button 
+      [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+      [useExistingCss]="true"
+      printSectionId="print-section"
+      ngxPrint>Print</button>
+    </div>
+  </div>
